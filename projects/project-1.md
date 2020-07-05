@@ -14,7 +14,7 @@ labels:
 summary: Supercharge conversion rate prediction on large volume itineraries.
 ---
 
-<div class="ui small rounded images">
+<div class="ui medium right floated rounded image">
   <img class="ui image" src="../images/conversion_1.jpg">
   <img class="ui image" src="../images/conversion_2.jpg">
 </div>
