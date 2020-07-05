@@ -1,44 +1,32 @@
 ---
 layout: project
 type: project
-image: images/micromouse.jpg
-title: Micromouse
-permalink: projects/micromouse
+image: images/conversion.jpg
+title: Conversion Rate Prediction by Two-layered Stacking Model + GPU
+permalink: projects/conversion
 # All dates must be YYYY-MM-DD format!
-date: 2015-07-01
+date: 2020-01-30
 labels:
-  - Robotics
-  - Arduino
-  - C++
-summary: My team developed a robotic mouse that won first place in the 2015 UH Micromouse competition.
+  - machine learning
+  - GPU
+  - python
+  - catboost
+summary: Supercharge conversion rate prediction on large volume itineraries.
 ---
 
 <div class="ui small rounded images">
-  <img class="ui image" src="../images/micromouse-robot.png">
-  <img class="ui image" src="../images/micromouse-robot-2.jpg">
-  <img class="ui image" src="../images/micromouse.jpg">
-  <img class="ui image" src="../images/micromouse-circuit.png">
+  <img class="ui image" src="../images/conversion_1.jpg">
+  <img class="ui image" src="../images/conversion_2.jpg">
 </div>
 
-Micromouse is an event where small robot “mice” solve a 16 x 16 maze.  Events are held worldwide.  The maze is made up of a 16 by 16 gird of cells, each 180 mm square with walls 50 mm high.  The mice are completely autonomous robots that must find their way from a predetermined starting position to the central area of the maze unaided.  The mouse will need to keep track of where it is, discover walls as it explores, map out the maze and detect when it has reached the center.  having reached the center, the mouse will typically perform additional searches of the maze until it has found the most optimal route from the start to the center.  Once the most optimal route has been determined, the mouse will run that route in the shortest possible time.
 
-For this project, I was the lead programmer who was responsible for programming the various capabilities of the mouse.  I started by programming the basics, such as sensor polling and motor actuation using interrupts.  From there, I then programmed the basic PD controls for the motors of the mouse.  The PD control the drive so that the mouse would stay centered while traversing the maze and keep the mouse driving straight.  I also programmed basic algorithms used to solve the maze such as a right wall hugger and a left wall hugger algorithm.  From there I worked on a flood-fill algorithm to help the mouse track where it is in the maze, and to map the route it takes.  We finished with the fastest mouse who finished the maze within our college.
+Conversion rate is essential for search content optimization. The search engine ranks the candidate items by the probability of them being clicked, which is provided by a online machine learning model that does the hard work. Predicting on millions of items within few seconds is no trivial task since both model performance and model scalability are considered. Following [a classic design published by Facebook](https://colab.research.google.com/drive/1B276T_uFwyqkiqyP4ha4pwdaeoNXS1N0?usp=sharing) in 2014, I took the challenge of reconstructing a model that can be used for providing such important features for the search items. 
 
-Here is some code that illustrates how we read values from the line sensors:
+The model is a two-layered ensemble with first gradient boosting decision tree layer and second logistic regression layer. Such design confers several advantages in creating a offline-training - online inferencing scheme: logistic regression is small sized and allows rapid inferencing, while gradient boosting tree ensures the model performance by using a large dataset in the offline training mode. In between two layers, there was a encoder to vectorize the categorical features. 
 
-```js
-byte ADCRead(byte ch)
-{
-    word value;
-    ADC1SC1 = ch;
-    while (ADC1SC1_COCO != 1)
-    {   // wait until ADC conversion is completed   
-    }
-    return ADC1RL;  // lower 8-bit value out of 10-bit data from the ADC
-}
-```
+In the face of growing data size for the search items (20-30 TB/day with 20% annual increase), I chose to implement it in Catboost library on top of a Tesla P100 GPU. Catboost also enables multi-GPU mode in case there was a need to upscale the training process. To avoid the "[curse of dimensionality](https://en.wikipedia.org/wiki/Curse_of_dimensionality#:~:text=The%20curse%20of%20dimensionality%20refers,was%20coined%20by%20Richard%20E.)" and to reduce the training time, I also used feature selection and downsampling. Different size of training data (forward chaining cross validation) were used to ensure performance. The stacked model took about 20mins to train on a day worth of data and about 20mins to predict on the entire set of data in one hour (on a scale of 10E8 observations). The ensemble model performs better than single tree model in that the it learns both linear and non-linear relationship; it also ensures two models complement each other in some way by summing up all weights to fine a better fit (logistic regression looks for global optimal weights, while GBDT looks for local optimal weights while ensure the total loss is below a certain threshould). 
 
-You can learn more at the [UH Micromouse Website](http://www-ee.eng.hawaii.edu/~mmouse/about.html).
+I gave a talk on this project in PyDen meetup, 2020. You can find the colab demo [here](https://colab.research.google.com/drive/1B276T_uFwyqkiqyP4ha4pwdaeoNXS1N0?usp=sharing), slides [here](https://docs.google.com/presentation/d/1WAkqvZGWKqCXzUpcMnUk0nEpHa1SnwzTlyA_1__wnwo/edit?usp=sharing).
 
 
 
