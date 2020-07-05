@@ -1,39 +1,39 @@
 {
   "basics": {
-    "name": "Molly Maluhia",
-    "label": "Student",
-    "picture": "https://techfolios.github.io/template/images/molly.png",
-    "email": "molly@hawaii.edu",
-    "phone": "808-333-4444",
-    "website": "https://mmaluhia.github.io",
-    "summary": "I am studying for a B.S. in Computer Science in the Department of Information and Computer Sciences at the University of Hawaii. I expect to graduate in Spring, 2020.",
+    "name": "Cassie Guo",
+    "label": "Data Scientist",
+    "picture": "https://github.com/lilsummer/lilsummer.github.io/blob/master/images/WechatIMG11.jpg",
+    "email": "xg233dataforthewin@gmail.com",
+    "phone": "952-465-6453",
+    "website": "https://lilsummer.github.io",
+    "summary": " I dissect data, synergize research findings and business requirements, design solutions, and support organizations in decision making.",
     "location": {
       "address": "",
-      "postalCode": "96822",
-      "city": "Honolulu",
+      "postalCode": "",
+      "city": "Denver",
       "countryCode": "USA",
-      "region": "Hawaii"
+      "region": "CO"
     },
     "profiles": [
       {
         "network": "github",
-        "username": "mmaluhia",
-        "url": "http://github.com/changeme"
+        "username": "lilsummer",
+        "url": "http://github.com/lilsummer"
       },
       {
         "network": "linkedin",
-        "username": "mollymaluhia",
-        "url": "http://linkedin.com/in/changeme"
+        "username": "",
+        "url": "https://www.linkedin.com/in/xi-cassie-guo-datascience/"
       },
       {
         "network": "twitter",
-        "username": "mollymal",
-        "url": "http://twitter.com/changeme"
+        "username": "BulletProofLS",
+        "url": "http://twitter.com/bulletproofls"
       },
       {
         "network": "instagram",
-        "username": "molly",
-        "url": "http://instagram.com/changeme"
+        "username": "lilsummer_",
+        "url": "http://instagram.com/lilsummer_"
       }
     ]
   },
