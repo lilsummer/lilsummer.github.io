@@ -13,11 +13,8 @@ labels:
   - catboost
 summary: Supercharge conversion rate prediction on large volume itineraries.
 ---
-
-<div class="ui medium right floated rounded image">
-  <img class="ui image" src="../images/conversion_1.jpg">
-  <img class="ui image" src="../images/conversion_2.jpg">
-</div>
+<img class="ui medium right floated rounded image" src="../images/conversion_1.jpg">
+<img class="ui medium right floated rounded image" src="../images/conversion_2.jpg">
 
 
 Conversion rate is essential for search content optimization. The search engine ranks the candidate items by the probability of them being clicked, which is provided by a online machine learning model that does the hard work. Predicting on millions of items within few seconds is no trivial task since both model performance and model scalability are considered. Following [a classic design published by Facebook](https://colab.research.google.com/drive/1B276T_uFwyqkiqyP4ha4pwdaeoNXS1N0?usp=sharing) in 2014, I took the challenge of reconstructing a model that can be used for providing such important features for the search items. 
