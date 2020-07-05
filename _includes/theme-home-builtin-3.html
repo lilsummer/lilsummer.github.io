@@ -1,7 +1,5 @@
 <!-- Home page design with card including image -->
-{% assign essay_pages = site.pages | where: "type", "essay"  | where_exp: "page", "page.draft != true" %}
 {% assign project_pages = site.pages | where: "type", "project" | where_exp: "page", "page.draft != true" %}
-{% assign num_essays = essay_pages.size %}
 {% assign num_projects = project_pages.size %}
 
 <div style="height: 100%" class="ui middle aligned grid ">
