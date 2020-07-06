@@ -1,25 +1,17 @@
 ---
 layout: project
 type: project
-image: images/vacay-square.png
-title: Vacay
-permalink: projects/vacay
+image: images/regression.png
+title: A Regression Approach to Estimate Price Elasticity
+permalink: projects/regression
 # All dates must be YYYY-MM-DD format!
-date: 2015-12-15
+date: 2019-12-01
 labels:
-  - Javascript
-  - Meteor
-  - MongoDB
-  - GitHub
-summary: A responsive web application for travel planning that my team developed in ICS 415.
+  - python
+  - regression
+  - operational research
+summary: Use regression model to estimate price elsaticity -- a important indicator for dynamic pricing.
 ---
+Price elasticity is a key economic concept widely used to measure the change of customers’ demand in response to price changes. In this study I used real world customer data to approximate the real demand, and estimated price elasticity from regression models. Several data transformation methods were compared. The robustness and feasibility of the selected price elasticity model prototypes were evaluated. We concluded that using a specific transformation model to estimate price elasticity shows promising results and can be applied for other key economical models. 
 
-<img class="ui medium right floated rounded image" src="../images/vacay-home-page.png">
-
-Vacay is a web application that I helped create as a team project in ICS 415, Spring 2015. The project helped me learn how to design and implement a responsive web site.
-
-Vacay is implemented using [Meteor](http://meteor.com), a JavaScript application platform. Within two weeks, we created a website that implements several types of reservations including flights, hotels, and car rentals.
-
-In this project I gained experience with full-stack web application design and associated technologies, including [MongoDB](http://mongodb.com) for database storage, the [Twitter Bootstrap](http://getbootstrap.com/) CSS Framework for the user interface, and Javascript for both client and server-side programming. 
- 
-Source: <a href="https://github.com/theVacay/vacay"><i class="large github icon"></i>theVacay/vacay</a>
+Tech stack: dask, statsmodel, pyspark
