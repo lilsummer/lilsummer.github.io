@@ -11,7 +11,7 @@ labels:
   - OpenAI gym
   - python
   - stable baseline
-summary: A draft implementation for a smart pricing agent, based on real-world data
+summary: A draft implementation for a smart pricing agent based on real-world data
 ---
 <img class="ui medium right floated rounded image" src="../images/rl_1.png">
 
