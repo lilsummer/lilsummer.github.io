@@ -3,7 +3,7 @@ layout: project
 type: project
 image: images/pricechart.png
 title: A draft implementation of pricing agent in DRL
-permalink: projects/conversion
+permalink: projects/rl
 # All dates must be YYYY-MM-DD format!
 date: 2020-02-30
 labels:
