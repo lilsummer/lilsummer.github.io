@@ -1,709 +1,658 @@
-<!-- <!DOCTYPE html> -->
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width initial-scale=1" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cassie Guo — ML & Data Storytelling</title>
+  <meta name="description" content="Cassie Guo — Machine Learning & Data Storytelling." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&family=Outfit:wght@200;300;400;500&display=swap');
+  </style>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-PGZH8HT');</script>
-  <!-- End Google Tag Manager -->
+    :root {
+      /* Photo-derived palette */
+      --blush:     #F2E8E4;      /* lightest — warm off-white with pink */
+      --petal:     #E8D5CB;      /* parchment-rose */
+      --dusty:     #C07860;      /* mid dusty rose from shirt highlights */
+      --rose:      #A84848;      /* dominant shirt rose */
+      --brick:     #783030;      /* deep shirt brick red */
+      --slate:     #4A5568;      /* navy-slate from floral accents */
+      --slate-lt:  #718096;      /* lighter slate */
+      --warm-grey: #B0A8A0;      /* background grey of the photo, warmed */
+      --ink:       #231010;      /* near-black warm */
+      --ink-mid:   #5C3A32;      /* dark warm brown */
+      --ink-lt:    #9A7060;      /* warm mid-tone */
+      --display:   'Syne', 'Trebuchet MS', Arial, sans-serif;
+      --sans:      'Outfit', 'Gill Sans', Optima, sans-serif;
+      --nav-w:     240px;
+    }
 
-  <!-- Materialize - Compiled and minified CSS-->
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/css/materialize.min.css" />
-  <!-- Font Awesome Icon - CSS-->
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
-  <!-- Custom Styles-->
-  <link rel="stylesheet" href="/assets/css/style.css" />
-  <title>Cassie Guo | Data Scientist</title>
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      background: var(--blush);
+      color: var(--ink);
+      display: flex;
+      min-height: 100vh;
+    }
 
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-126939217-2"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0;
+      width: var(--nav-w);
+      height: 100vh;
+      background: var(--petal);
+      border-right: 1px solid var(--dusty);
+      display: flex;
+      flex-direction: column;
+      padding: 3rem 2rem;
+      z-index: 100;
+    }
+    .nav-name {
+      font-family: var(--display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+      line-height: 1.1;
+      margin-bottom: 0.25rem;
+    }
+    .nav-role {
+      font-size: 0.68rem;
+      font-weight: 300;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ink-lt);
+      margin-bottom: 3rem;
+    }
+    nav ul { list-style: none; flex: 1; }
+    nav ul li { margin-bottom: 0.1rem; }
+    nav ul li a {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-mid);
+      text-decoration: none;
+      padding: 0.42rem 0;
+      border-bottom: 1px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    nav ul li a:hover, nav ul li a.active {
+      color: var(--rose);
+      border-bottom-color: var(--rose);
+    }
+    .nav-social { display: flex; gap: 1rem; margin-top: auto; }
+    .nav-social a {
+      font-size: 0.68rem;
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      color: var(--ink-lt);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-social a:hover { color: var(--rose); }
 
-    gtag('config', 'UA-126939217-2');
-  </script>
+    /* ── MAIN ── */
+    main { margin-left: var(--nav-w); flex: 1; max-width: 960px; }
 
-  <!-- Open Graph-->
-  <meta property="og:locale" content="en_US" />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Varad Bhogayata | Software Developer" />
-  <meta property="og:description" content="Software Developer" />
-  <meta property="og:url" content="https://varadbhogayata.github.io/" />
-  <meta property="og:site_name" content="Varad Bhogayata | Software Developer" />
-  <meta property="article:publisher" content="https://varadbhogayata.github.io/" />
-  <meta property="og:image" content="https://varadbhogayata.github.io/examples/preview.JPG" />
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:site" content="@varad_bhogayata" />
-  <meta name="twitter:title" content="Coder | Technofreak | Explorer | Minimalist | Humane" />
-  <meta name="twitter:description" content="Software Developer" />
-  <meta name="twitter:url" content="https://twitter.com/varad_bhogayata" />
-  <meta name="author" content="Cassie Guo" />
-  <meta name="description" content="Software Developer with a passion for backend development and artificial intelligence." />
-  <link rel="apple-touch-icon" sizes="57x57" href="/assets/img/favicon/apple-icon-57x57.png" />
-  <link rel="apple-touch-icon" sizes="60x60" href="/assets/img/favicon/apple-icon-60x60.png" />
-  <link rel="apple-touch-icon" sizes="72x72" href="/assets/img/favicon/apple-icon-72x72.png" />
-  <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/favicon/apple-icon-76x76.png" />
-  <link rel="apple-touch-icon" sizes="114x114" href="/assets/img/favicon/apple-icon-114x114.png" />
-  <link rel="apple-touch-icon" sizes="120x120" href="/assets/img/favicon/apple-icon-120x120.png" />
-  <link rel="apple-touch-icon" sizes="144x144" href="/assets/img/favicon/apple-icon-144x144.png" />
-  <link rel="apple-touch-icon" sizes="152x152" href="/assets/img/favicon/apple-icon-152x152.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicon/apple-icon-180x180.png" />
-  <link rel="icon" type="image/png" sizes="192x192" href="/assets/img/favicon/android-icon-192x192.png" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon/favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="96x96" href="/assets/img/favicon/favicon-96x96.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon/favicon-16x16.png" />
-  <link rel="manifest" href="/assets/img/favicon/manifest.json" />
-  <meta name="msapplication-TileColor" content="#ffffff" />
-  <meta name="msapplication-TileImage" content="/assets/img/favicon/ms-icon-144x144.png" />
-  <meta name="theme-color" content="#ffffff" />
-  <meta name="robots" content="index, follow" />
-  <!-- Google Site Verification for indexing -->
-  <meta name="google-site-verification" content="_qxK8tePiU2fhnwlwnJ7pkDFnj1k2EiKq_cYGy1Cb84" />
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 4rem 4rem 4rem 4.5rem;
+      gap: 3.5rem;
+      background: var(--blush);
+      position: relative;
+      overflow: hidden;
+    }
+    #hero::before {
+      content: none;
+    }
+    .hero-left {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+    }
+    .hero-right {
+      flex-shrink: 0;
+      width: 280px;
+      height: 280px;
+      position: relative;
+      z-index: 2;
+    }
+    .hero-right img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      border-radius: 6px;
+    }
+
+    .hero-tag {
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 1rem;
+      font-weight: 500;
+    }
+
+    .hero-name {
+      font-family: var(--display);
+      font-size: 2.8rem;
+      font-weight: 700;
+      line-height: 1.05;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+      margin-bottom: 1.4rem;
+    }
+    .hero-name em {
+      font-style: normal;
+      color: var(--rose);
+    }
+
+    .hero-desc {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--ink-mid);
+      max-width: 400px;
+      line-height: 1.85;
+      margin-bottom: 2rem;
+    }
+    .hero-desc .arrow-line {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--ink);
+      display: block;
+      margin-bottom: 0.3rem;
+      letter-spacing: -0.01em;
+    }
+    .hero-desc .arrow {
+      color: var(--rose);
+      font-weight: 500;
+    }
+    .hero-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-bottom: 2.5rem;
+    }
+    .pill {
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--slate);
+      border: 1px solid var(--slate-lt);
+      padding: 0.28rem 0.7rem;
+      border-radius: 999px;
+      font-weight: 400;
+    }
+    .hero-cta { display: flex; gap: 1rem; align-items: center; }
+    .btn-primary {
+      display: inline-block;
+      font-family: var(--display);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: var(--blush);
+      background: var(--brick);
+      padding: 0.6rem 1.8rem;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: var(--rose); }
+    .btn-ghost {
+      font-size: 0.72rem;
+      font-weight: 300;
+      color: var(--ink-mid);
+      text-decoration: none;
+      border-bottom: 1px solid var(--dusty);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .btn-ghost:hover { color: var(--rose); border-color: var(--rose); }
+
+    /* ── SECTIONS ── */
+    section { padding: 6rem 5rem; border-top: 1px solid var(--dusty); }
+    .section-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 0.8rem;
+      font-weight: 400;
+    }
+    .section-title {
+      font-family: var(--display);
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+      margin-bottom: 2.5rem;
+    }
+    .section-title em {
+      font-family: var(--sans);
+      font-style: italic;
+      font-weight: 200;
+      font-size: 0.52em;
+      letter-spacing: 0em;
+      color: var(--rose);
+      display: block;
+      line-height: 2.2;
+    }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    .about-text p {
+      font-size: 0.92rem;
+      font-weight: 300;
+      line-height: 1.9;
+      color: var(--ink-mid);
+      margin-bottom: 1.1rem;
+    }
+    .about-text p strong { font-weight: 500; color: var(--ink); }
+    .phil-list { list-style: none; }
+    .phil-list li {
+      padding: 0.9rem 0;
+      border-bottom: 1px solid var(--petal);
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+    .phil-list li:first-child { border-top: 1px solid var(--petal); }
+    .phil-term {
+      font-family: var(--display);
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--rose);
+    }
+    .phil-def {
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: var(--ink-mid);
+      line-height: 1.6;
+    }
+
+    /* ── PROJECTS ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+    }
+    .project-card {
+      background: var(--petal);
+      padding: 2rem;
+      position: relative;
+      text-decoration: none;
+      display: block;
+      color: inherit;
+      transition: background 0.2s;
+    }
+    .project-card:hover { background: #DEC8BC; }
+    .project-num {
+      font-family: var(--display);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--dusty);
+      line-height: 1;
+      margin-bottom: 0.8rem;
+      letter-spacing: -0.03em;
+    }
+    .project-tag {
+      font-size: 0.62rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--slate);
+      margin-bottom: 0.6rem;
+      display: block;
+      font-weight: 400;
+    }
+    .project-title {
+      font-family: var(--display);
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+      color: var(--ink);
+      margin-bottom: 0.65rem;
+    }
+    .project-desc {
+      font-size: 0.8rem;
+      font-weight: 300;
+      line-height: 1.65;
+      color: var(--ink-mid);
+      margin-bottom: 1.1rem;
+    }
+    .project-stack { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .stack-tag {
+      font-size: 0.6rem;
+      letter-spacing: 0.05em;
+      color: var(--ink-lt);
+      border: 1px solid var(--dusty);
+      padding: 0.18rem 0.48rem;
+      border-radius: 3px;
+    }
+    .project-arrow {
+      position: absolute; top: 2rem; right: 2rem;
+      font-size: 1rem; color: var(--dusty);
+      transition: transform 0.2s, color 0.2s;
+    }
+    .project-card:hover .project-arrow { transform: translate(3px,-3px); color: var(--rose); }
+
+    /* ── BLOG ── */
+    .blog-item {
+      display: grid;
+      grid-template-columns: 90px 1fr auto;
+      align-items: baseline;
+      gap: 1.2rem;
+      padding: 1.4rem 0;
+      border-bottom: 1px solid var(--petal);
+      text-decoration: none;
+      color: inherit;
+    }
+    .blog-item:first-child { border-top: 1px solid var(--petal); }
+    .blog-item:hover .blog-title { color: var(--rose); }
+    .blog-date { font-size: 0.68rem; color: var(--ink-lt); font-weight: 300; }
+    .blog-title {
+      font-size: 0.95rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--ink);
+      transition: color 0.2s;
+    }
+    .blog-cat {
+      font-size: 0.62rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--slate);
+      white-space: nowrap;
+      font-weight: 400;
+    }
+
+    /* ── CONTACT ── */
+    .contact-inner p {
+      font-size: 0.92rem;
+      font-weight: 300;
+      line-height: 1.9;
+      color: var(--ink-mid);
+      margin-bottom: 2.5rem;
+      max-width: 500px;
+    }
+    .contact-links { display: flex; flex-direction: column; gap: 1rem; }
+    .contact-link { display: flex; align-items: center; gap: 1rem; text-decoration: none; }
+    .contact-link-icon {
+      width: 36px; height: 36px;
+      border: 1px solid var(--dusty);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem; color: var(--ink-mid);
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+      flex-shrink: 0;
+    }
+    .contact-link:hover .contact-link-icon {
+      background: var(--rose); color: var(--blush); border-color: var(--rose);
+    }
+    .contact-link-text { font-size: 0.88rem; font-weight: 300; color: var(--ink-mid); transition: color 0.2s; }
+    .contact-link:hover .contact-link-text { color: var(--rose); }
+
+    footer {
+      padding: 2.5rem 5rem;
+      border-top: 1px solid var(--dusty);
+      font-size: 0.68rem;
+      color: var(--ink-lt);
+      letter-spacing: 0.05em;
+      font-weight: 300;
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 800px) {
+      nav { display: none; }
+      main { margin-left: 0; }
+      #hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-right { height: 60vw; }
+      .hero-left { padding: 3rem 2rem 3rem; }
+      section { padding: 4rem 2rem; }
+      footer { padding: 2rem; }
+      .about-grid { grid-template-columns: 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .blog-item { grid-template-columns: 1fr; gap: 0.3rem; }
+    }
+  </style>
 </head>
-
 <body>
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PGZH8HT"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe>
-  </noscript>
-  
-  <!-- Navigation Menu-->
-  <!-- Nav class 1 -->
-  <nav class="hide-on-small-only">
-    <ul class="side-nav fixed section table-of-contents">
 
-      <li class="logo">
-        <a id="logo-container" aria-label="Navigate to the beginning of the page" href="#intro"
-          class="brand-logo grey-blue-text">
-          <img src="/assets/img/myprofileimg.png" class="circle img-responsive profile-pic" alt="avatar">
-        </a>
-      </li>
-
-      <li class="bold">
-        <a aria-label="Navigate to the About section" href="#about" class="waves-effect waves-dark teal-text"><i
-            class="mdi-social-person small"></i><span>About</span></a>
-      </li>
-      <!-- <li class="bold">
-        <a aria-label="Navigate to the Experience section" href="#experience"
-          class="waves-effect waves-dark teal-text"><i
-            class="mdi-action-trending-up small"></i><span>Experience</span></a>
-      </li> -->
-
-      <li class="bold">
-        <!-- mdi-av-web small
-             mdi-av-my-library-books small-->
-        <a aria-label="Navigate to the Projects section" href="#projects" class="waves-effect waves-dark teal-text"><i
-            class="mdi-av-my-library-books small"></i><span>Projects</span></a>
-      </li>
-
-      
-      <!-- <li class="bold">
-
-        <a aria-label="Navigate to the Education section" href="#education" class="waves-effect waves-dark teal-text"><i
-            class="mdi-social-school small"></i><span>Education</span></a>
-      </li> -->
-
-      <li class="bold">
-        <!-- 
-        1. mdi-communication-contacts
-        2. mdi-content-mail
-        3. mdi-communication-email
-        -->
-        <a aria-label="Navigate to the Contact section" href="#contact" class="waves-effect waves-dark teal-text"><i
-            class="mdi-content-mail small"></i><span>Contact</span></a>
-      </li>
-
-      <li class="bold">
-        <!--
-        ICONS:
-        1. mdi-action-description
-        2. mdi-file-folder
-        3. mdi-file-folder-open
-        4. mdi-file-attachment
-        5. mdi-file-folder-shared
-        -->
-        <!-- <a aria-label="Open Varad's resume in a new tab" href="#resume" target="_blank"
-          onclick="window.open('https://drive.google.com/file/d/1vYi-bMyIsZPve0x_clxY8xsDtiHiOMd3/view?usp=sharing')"
-          class="waves-effect waves-dark teal-text"><i class="mdi-file-folder-open small"></i><span>Resume</span></a> -->
-        <!-- <a aria-label="Open Cassie's resume in a new tab" href="https://lilsummer.github.io/assets/resume/myresume.pdf" target="_blank"
-        class="waves-effect waves-dark teal-text"><i class="mdi-file-folder-open small"></i><span>Resume</span></a>   -->
-      </li>
+  <nav>
+    <div class="nav-name">Cassie Guo</div>
+    <div class="nav-role">ML · Data · Impact</div>
+    <ul>
+      <li><a href="#hero" class="active">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#blog">Writing</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
-  </nav>
-
-  <!-- Nav class 2 -->
-  <nav class="hide-on-large only trigger z-depth-1">
-    <a aria-label="Toggle visibility of the mobile navbar" href="#" data-activates="slide-out"
-      class="button-collapse"><i class="mdi-navigation-menu"></i></a>
-    <div class="name-title">
-      <a id="name" aria-label="Navigate to the beginning of the page" href="#" class="teal-text">Cassie Guo</a><span class="black-text">Data Scientist</span>
+    <div class="nav-social">
+      <a href="https://github.com/lilsummer" target="_blank">GitHub</a>
+      <a href="https://www.linkedin.com/in/xi-cassie-guo-datascience/" target="_blank">LinkedIn</a>
     </div>
   </nav>
 
-  <!-- Nav class 3 -->
-  <nav class="hide-on-large only">
-    <ul id="slide-out" class="side-nav">
-      <li class="bold">
-        <a aria-label="Navigate to the About section" href="#about" class="waves-effect waves-dark teal-text"><i
-            class="mdi-social-person small"></i><span>About</span></a>
-      </li>
-      <!-- <li class="bold">
-        <a aria-label="Navigate to the Experience section" href="#experience"
-          class="waves-effect waves-dark teal-text"><i
-            class="mdi-action-trending-up small"></i><span>Experience</span></a>
-      </li> -->
-      <li class="bold">
-        <a aria-label="Navigate to the Projects section" href="#projects" class="waves-effect waves-dark teal-text"><i
-            class="mdi-av-my-library-books small"></i><span>Projects</span></a>
-      </li>
-      <!-- <li class="bold">
-        <a aria-label="Navigate to the Skills section" href="#skills" class="waves-effect waves-dark teal-text"><i
-            class="mdi-action-assessment small"></i><span>Skills</span></a>
-      </li> -->
-
-      <!-- <li class="bold">
-        <a aria-label="Navigate to the Education section" href="#education" class="waves-effect waves-dark teal-text"><i
-            class="mdi-social-school small"></i><span>Education</span></a>
-      </li> -->
-      <li class="bold">
-        <a aria-label="Navigate to the Contact section" href="#contact" class="waves-effect waves-dark teal-text"><i
-            class="mdi-content-mail small"></i><span>Contact</span></a>
-      </li>
-      <!-- <li class="bold">
-        <a aria-label="Open Cassie's Resume in a new tab"
-          href="https://drive.google.com/" target="_blank"
-          class="waves-effect waves-dark teal-text"><i class="mdi-file-folder-open small"></i><span>Resume</span></a>
-      </li> -->
-    </ul>
-  </nav>
-
-  <!-- Main Content-->
   <main>
-    <!-- First Section: Heading lines and image -->
-    <section id="intro" class="section scrollspy full-height">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="col-md-9">
-          <div class="content section-padding valign" style="margin-left: 10%; margin-top: 50px;">
-            <div class="caption">
-              <h2>Hi, I'm <span class="teal">Cassie Guo</span></h2>
-              <h5 style="color:#fff">A <span class="typing" style="font-weight: 300; color:#004d40"></span></h5>
-              <!-- <h5 style="color:#00796b">A <span class="typing" style="font-weight: 300; color:#fff"></span></h5> -->
-              <h5>Promote the well-being of people via data and models</h5>
-            </div>
-            <div class="social">
-              <a href="https://www.linkedin.com/in/xi-cassie-guo-datascience/" target="_blank">
-                <button class="icon-btn linkedin">
-                  <i class="fa fa-linkedin"></i>
-                </button>
-              </a>
-              <a href="https://github.com/lilsummer/" target="_blank">
-                <button class="icon-btn github">
-                  <i class="fa fa-github"></i>
-                </button>
-              </a>
 
-              <!-- <a href="https://angel.co/u/varad_bhogayata" target="_blank">
-                <button class="icon-btn angellist">
-                  <i class="fa fa-angellist"></i>
-                </button>
-              </a> -->
+    <!-- HERO -->
+    <section id="hero">
+      <div class="hero-left">
+        <div class="hero-tag">Machine Learning · Data Storytelling</div>
+        <h1 class="hero-name">Cassie <em>Guo</em></h1>
+        <p class="hero-desc">
+          <span class="arrow-line">From hypothesis to impact —</span>
+          Data-driven ML solutions for organizations of all sizes
+        </p>
+        <div class="hero-pills">
+          <span class="pill">Deep Learning</span>
+          <span class="pill">Machine Learning</span>
+          <span class="pill">Computer Vision</span>
+          <span class="pill">Time Series</span>
+          <span class="pill">Python</span>
+          <span class="pill">Advanced Analytics</span>
+        </div>
+        <div class="hero-cta">
+          <a href="#projects" class="btn-primary">See My Work</a>
+          <a href="#contact" class="btn-ghost">Get In Touch →</a>
+        </div>
+      </div>
+      <div class="hero-right">
+        <img src="photo_cropped.jpg" alt="Cassie Guo" />
+      </div>
+    </section>
 
-              <!-- <a href="http://linkedin.com/in/varadbhogayata" target="_blank">
-                  <span class="fa-stack fa-lg">
-                    <i class="fa fa-circle fa-stack-2x"></i>
-                    <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
-
-                  </span>
-              </a> -->
-            </div>
-            <div class='buttons'>
-              <a href="#about" class="readme">Read More</a>
-              <a href="#contact" class="contactme">Contact Me</a>
-            </div>
-          </div>
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="section-label">About Me</div>
+      <h2 class="section-title">About<em>data, models, and meaning</em></h2>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>I dissect data, distill insights, develop solutions and deploy applications for problems of all sizes and shapes. My work lives at the intersection of <strong>machine learning</strong>, human communication, and practical impact.</p>
+          <p>I'm particularly drawn to questions that blend technical rigor with storytelling — how do you make a model's reasoning visible to a stakeholder/ policy maker?</p>
+          <p>I believe the best practice in data science is to stay humble: always question your assumptions, acknowledge what you cannot know, and stay curious.</p>
+        </div>
+        <div>
+          <p class="section-label" style="margin-bottom: 1rem;">My Philosophy</p>
+          <ul class="phil-list">
+            <li>
+              <span class="phil-term">Data Centric</span>
+              <span class="phil-def">Better data beats better algorithms. Garbage in, garbage out — always.</span>
+            </li>
+            <li>
+              <span class="phil-term">No Free Lunch</span>
+              <span class="phil-def">No single model solves everything. Context shapes the right tool.</span>
+            </li>
+            <li>
+              <span class="phil-term">Occam's Razor</span>
+              <span class="phil-def">The simplest explanation that fits the data is usually the right one.</span>
+            </li>
+            <li>
+              <span class="phil-term">Abundance of Ideas</span>
+              <span class="phil-def">The best way to find the right idea is to generate lots of them first.</span>
+            </li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <!-- Second Section: About -->
-    <section id="about" class="section scrollspy">
-      <h3 class="page-title white-text teal">About</h3>
-      <div class="container flow-text">
-        <!-- <blockquote>
-          <h2>
-            A Software Developer with a passion for Backend Development and Artificial Intelligence.
-
-          </h2>
-        </blockquote> -->        
-        <p>
-          I dissect data, distill insights, develop solutions and deploy applications for problems of all sizes and shapes. My data science philosophy includes:
-        </p>
-        <p><a href="https://mitsloan.mit.edu/ideas-made-to-matter/why-its-time-data-centric-artificial-intelligence">Data Centric</a></p>
-        <p><a href="https://en.wikipedia.org/wiki/No_free_lunch_theorem">No Free Lunch</a></p>
-        <p><a href="https://en.wikipedia.org/wiki/Occam%27s_razor">Occam's Razor</a></p>
-        <p>The best way to come up with the utimate idea is to have lots of ideas</p>
-        <!-- <p>
-          
-          Detail-oriented Software Developer with professional experience in Backend Development, Machine Learning, Computer Vision. I am adept in Python, Django, Flask, SQL, Machine Learning, Computer Vision.           
-        </p> -->
-        <!-- <p>
-          Looking for an opportunity to work
-        </p> -->
-        <!-- <p>
-          Another Paragraph
-        </p>  -->
-        <!-- <p>
-        <strong>Current Focus</strong>:&nbsp;<a aria-label="Navigate to the Inclusive Design Patterns homepage"
-          href="https://www.smashingmagazine.com/inclusive-design-patterns/">Accessibility</a>&nbsp;//&nbsp;<a
-          aria-label="Navigate to the Full Stack React homepage"
-          href="https://www.fullstackreact.com/">React</a>&nbsp;//&nbsp;<a
-          aria-label='Navigate to the article "Scalable CSS"'
-          href="https://mrmrs.github.io/writing/2016/03/24/scalable-css/">Design Systems</a>
-        </p> -->
+    <!-- BLOG -->
+    <section id="blog">
+      <div class="section-label">Writing</div>
+      <h2 class="section-title">Writing<em>thoughts on data &amp; models</em></h2>
+      <div>
+        <a class="blog-item" href="https://github.com/lilsummer/misinfo-NLP" target="_blank">
+          <span class="blog-date">2022</span>
+          <span class="blog-title">Detecting Health Misinformation with Ensemble BERT</span>
+          <span class="blog-cat">NLP</span>
+        </a>
+        <a class="blog-item" href="https://github.com/lilsummer/presentations_n_talks/blob/master/markdown/2021-06-01-btc-fee.md" target="_blank">
+          <span class="blog-date">2021</span>
+          <span class="blog-title">Impact Factors for BTC Transaction Fees</span>
+          <span class="blog-cat">Analysis</span>
+        </a>
+        <a class="blog-item" href="https://cassieguo.medium.com/can-you-beat-the-market-some-learnings-on-cryptocurrency-2b56a61d7804" target="_blank">
+          <span class="blog-date">2021</span>
+          <span class="blog-title">Can You Beat the Market? Some Learnings on Cryptocurrency</span>
+          <span class="blog-cat">Medium</span>
+        </a>
+        <a class="blog-item" href="https://github.com/lilsummer/presentations_n_talks/blob/master/markdown/2020-05-20-m5-forecasting.md" target="_blank">
+          <span class="blog-date">2020</span>
+          <span class="blog-title">M5 Forecasting: Lessons from Kaggle</span>
+          <span class="blog-cat">Competition</span>
+        </a>
       </div>
     </section>
 
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="section-label">Selected Work</div>
+      <h2 class="section-title">Projects<em>selected work &amp; experiments</em></h2>
+      <div class="projects-grid">
 
-    <!-- Fourth Section: Projects -->
-    <section id="projects" class="section scrollspy">
-      <h3 class="page-title white-text teal">Projects</h3>
-      <div class="container">
-        <div class="row">
-
-          <div class="col s20 m10 l6">
-            <div class="card medium">
-              <div class="card-image waves-effect waves-block waves-light">
-                <img alt="medical research" src="/assets/img/medical_research.png" style="height: 100%; width: 100%" class="activator" />
-              </div>
-              <div class="card-content">
-                <span class="card-title activator teal-text hoverline">Medical Research Interpreter<i
-                    class="mdi-navigation-more-vert right"></i></span>
-                <p>
-                  An multi-stage reasoning application to summarize and interpret medical literature
-                </p>
-              </div>
-              <div class="card-reveal">
-                <!-- TODO: change this -- only close button -->
-                <!-- <span class="card-title brown-text">Accomplishments<i class="mdi-navigation-close right"></i></span> -->
-                <span class="card-title grey-text"><small>Accomplishments</small><i
-                    class="mdi-navigation-close right"></i></span>
-                <ul>
-                  <li><b>Tech stacks:</b>python, Langchain, huggingface, LLM, Prompt Engineering</li>
-                  <li>Using large language models (LLMs) to summarize medical literature, and translate into layman language</li>
-                  <li><b>Stage 1: </b>A large language model to summarize literature with short sentences</li>
-                  <li><b>Stage 2: </b>A different model using text2text generation to translate the summary into layman language for non-professionals</li>
-
-
-                </ul>
-                <div class="card-action">
-                  <!-- <a aria-label="Visit " href="https://galvanic-music.herokuapp.com/" target="_blank" data-position="top"
-                    data-tooltip="View Online"
-                    class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i
-                      class="fa fa-external-link"></i></a> -->
-                  <a aria-label="Visit the GitHub repo for project" href="https://github.com/lilsummer/medial_interpreter_llm"
-                    target="_blank" data-position="top" data-tooltip="View Source"
-                    class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i
-                      class="fa fa-github"></i></a>
-                </div>
-              </div>
-            </div>
+        <a class="project-card" href="https://github.com/lilsummer/medial_interpreter_llm" target="_blank">
+          <span class="project-arrow">↗</span>
+          <div class="project-num">01</div>
+          <span class="project-tag">LLM · Healthcare</span>
+          <h3 class="project-title">Medical Research Interpreter</h3>
+          <p class="project-desc">A multi-stage reasoning app that summarizes medical literature and translates it into plain language for non-specialists.</p>
+          <div class="project-stack">
+            <span class="stack-tag">Python</span><span class="stack-tag">LangChain</span><span class="stack-tag">HuggingFace</span><span class="stack-tag">Prompt Engineering</span>
           </div>
+        </a>
 
-          <div class="col s20 m10 l6">
-            <div class="card medium">
-              <div class="card-image waves-effect waves-block waves-light">
-                <img alt="quiz app" src="/assets/img/nlp_misinfo.png" style="height: 100%; width: 100%" class="activator" />
-              </div>
-              <div class="card-content">
-                <span class="card-title activator teal-text hoverline">Explainable API to Detect Public Health Misinformation
-                  On Twitter
-                  <i
-                    class="mdi-navigation-more-vert right"></i></span>
-                <p>
-                  An API which flags misinformation on social media using ensemble BERT
-                </p>
-              </div>
-              <div class="card-reveal">
-                <!-- TODO: change this -- only close button -->
-                <!-- <span class="card-title brown-text">Accomplishments<i class="mdi-navigation-close right"></i></span> -->
-                <span class="card-title grey-text"><small>Accomplishments</small><i
-                    class="mdi-navigation-close right"></i></span>
-                <ul>
-                  <li><b>Tools:</b> Python, HuggingFace</li>
-                  <li>API end point that uses ensemble BERT fine-tuned on COVID-19 related tweets to classify new tweets </li>
-                  <li>Augmented dataset to incorporate domain expert knowledge</li>
-
-                </ul>
-                <div class="card-action">
-                  <!-- <a aria-label="Visit " href="https://quiz-up-app.herokuapp.com/" target="_blank" data-position="top"
-                    data-tooltip="View Online"
-                    class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i
-                      class="fa fa-external-link"></i></a> -->
-                  <a aria-label="Visit the GitHub repo for  project" href="https://github.com/lilsummer/misinfo-NLP"
-                    target="_blank" data-position="top" data-tooltip="View Source"
-                    class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i
-                      class="fa fa-github"></i></a>
-                </div>
-              </div>
-            </div>
+        <a class="project-card" href="https://github.com/lilsummer/misinfo-NLP" target="_blank">
+          <span class="project-arrow">↗</span>
+          <div class="project-num">02</div>
+          <span class="project-tag">NLP · Public Health</span>
+          <h3 class="project-title">Explainable Misinformation Detector</h3>
+          <p class="project-desc">An API that flags public health misinformation on Twitter using ensemble BERT fine-tuned on COVID-19 tweets.</p>
+          <div class="project-stack">
+            <span class="stack-tag">BERT</span><span class="stack-tag">HuggingFace</span><span class="stack-tag">FastAPI</span><span class="stack-tag">Data Augmentation</span>
           </div>
+        </a>
 
-          <!-- 1. Django Project -->
-          <!-- <div class="col s12 m6 l6">
-            <div class="card medium">
-              <div class="card-image waves-effect waves-block waves-light">
-                <img alt="django web app" src="/assets/img/project-library-logo.png" style="height: 100%; width: 100%" class="activator" />
-              </div>
-              <div class="card-content">
-                <span class="card-title activator teal-text hoverline">Local Library Web-App<i
-                    class="mdi-navigation-more-vert right"></i></span>
-                <p>
-                  A web-app that creates an online catalog for a small local library, where users can browse available books and manage their accounts.
-                </p>
-              </div>
-              <div class="card-reveal">
-                <span class="card-title grey-text"><small>Accomplishments</small><i
-                    class="mdi-navigation-close right"></i></span>
-                <ul>
-                  <li><b>Tools:</b> HTML, CSS, Bootstrap, SQLite, Django, Heroku</li>
-                  <li>Users can view list and detail information for books and authors.</li>
-                  <li>Admin users can create and manage models.</li>
-                  <li>Librarians can renew reserved books.</li>
-
-                </ul>
-                <div class="card-action">
-                  <a aria-label="Visit " href="https://django-local-lib.herokuapp.com" target="_blank" data-position="top"
-                    data-tooltip="View Online"
-                    class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i
-                      class="fa fa-external-link"></i></a>
-                  <a aria-label="Visit the GitHub repo for  project" href="https://github.com/varadbhogayata/django-local-library"
-                    target="_blank" data-position="top" data-tooltip="View Source"
-                    class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i
-                      class="fa fa-github"></i></a>
-                </div>
-              </div>
-            </div>
-          </div> -->
-
-          <!-- Flask Project -->
-          <div class="col s20 m10 l6">
-            <div class="card medium">
-              <div class="card-image waves-effect waves-block waves-light">
-                <img alt="Screenshot of web app" src="/assets/img/btc.jpg"
-                style="height: 100%; width: 100%" class="activator" />
-              </div>
-              <div class="card-content">
-                <span class="card-title activator teal-text hoverline">Exploring Impact Factors for BTC Fee using Regression Models<i
-                    class="mdi-navigation-more-vert right"></i></span>
-                <p>
-                  Using open source datasets to understand factors that influence BTC transaction fee
-                </p>
-              </div>
-              <div class="card-reveal">
-                <!-- TODO: change this -- only close button -->
-                <!-- <span class="card-title brown-text">Accomplishments<i class="mdi-navigation-close right"></i></span> -->
-                <span class="card-title teal-text"><small>Accomplishments</small><i
-                    class="mdi-navigation-close right"></i></span>
-                <ul>
-                  <li><b>Tools:</b> Python, regression models</li>
-
-
-                </ul>
-                <div class="card-action">
-                  <a aria-label="Visit Blog website" href="https://github.com/lilsummer/presentations_n_talks/blob/master/markdown/2021-06-01-btc-fee.md" target="_blank" data-position="top"
-                    data-tooltip="View Post"
-                    class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i
-                      class="fa fa-external-link"></i></a>
-                  <!-- <a aria-label="Visit the GitHub repo for  project" href="https://github.com/varadbhogayata/flask-blog"
-                    target="_blank" data-position="top" data-tooltip="View Source"
-                    class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i
-                      class="fa fa-github"></i></a> -->
-                </div>
-              </div>
-            </div>
+        <a class="project-card" href="https://github.com/lilsummer/CS598_DL/blob/main/output/manuscript.pdf" target="_blank">
+          <span class="project-arrow">↗</span>
+          <div class="project-num">03</div>
+          <span class="project-tag">Computer Vision · Medicine</span>
+          <h3 class="project-title">COVID-19 X-Ray Classifier</h3>
+          <p class="project-desc">Transfer learning on chest X-rays achieving 98% sensitivity and 99% specificity using ResNet50 with one-cycle learning policy.</p>
+          <div class="project-stack">
+            <span class="stack-tag">ResNet50</span><span class="stack-tag">PyTorch</span><span class="stack-tag">Transfer Learning</span>
           </div>
+        </a>
 
-          <!-- VQA -->
-          <div class="col s20 m10 l6">
-            <div class="card medium">
-              <div class="card-image waves-effect waves-block waves-light">
-                <img alt="Screenshot of  web app" src="/assets/img/cxr.jpg" style="height: 100%; width: 100%" class="activator" />
-              </div>
-              <div class="card-content">
-                <span class="card-title activator teal-text hoverline">X-Ray Image Classification<i
-                    class="mdi-navigation-more-vert right"></i></span>
-                <p>Detect COVID-19 from Chest X-ray Images using Transfer Learning                
-                </p>
-              </div>
-              <div class="card-reveal">
-                <!-- TODO: change this -- only close button -->
-                <!-- <span class="card-title brown-text">Accomplishments<i class="mdi-navigation-close right"></i></span> -->
-                <span class="card-title teal-text"><small>Accomplishments</small><i
-                    class="mdi-navigation-close right"></i></span>
-                <ul>
-                  <li>Achieved 98% sensitivity and 99% specificity scores</li>
-                  <li>Implemented one cycle learning policy and reduced learning rate policy on ResNet50, resulting in better performance within shorter training time</li>
-
-                </ul>
-                <div class="card-action">
-                  <a aria-label="Visit the GitHub repo for  project"
-                    href="https://github.com/lilsummer/CS598_DL/blob/main/output/manuscript.pdf" target="_blank"
-                    data-position="top" data-tooltip="View Manuscript"
-                    class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i
-                      class="fa fa-github"></i></a>
-                </div>
-              </div>
-            </div>
+        <a class="project-card" href="https://github.com/lilsummer/presentations_n_talks/blob/master/markdown/2020-05-20-m5-forecasting.md" target="_blank">
+          <span class="project-arrow">↗</span>
+          <div class="project-num">04</div>
+          <span class="project-tag">Time Series · Forecasting</span>
+          <h3 class="project-title">M5 Walmart Sales Forecasting</h3>
+          <p class="project-desc">Kaggle competition — predicted 28-day daily sales using CatBoost with lag features and moving-window engineering.</p>
+          <div class="project-stack">
+            <span class="stack-tag">CatBoost</span><span class="stack-tag">Feature Engineering</span><span class="stack-tag">Time Series</span>
           </div>
+        </a>
 
-          <!-- Video Summarizer -->
-          <div class="col s20 m10 l6">
-            <div class="card medium">
-              <div class="card-image waves-effect waves-block waves-light">
-                <img alt="Screenshot of  web app" src="/assets/img/pricing.jpg" style="height: 100%; width: 100%" class="activator" />
-              </div>
-              <div class="card-content">
-                <span class="card-title activator teal-text hoverline">Kaggle competition - M5 Forecasting Accuracy<i
-                    class="mdi-navigation-more-vert right"></i></span>
-                <p>
-                  Use the daily sales of each goods from Walmart during 2016-2019 to predict the daily sales of next 28 days
-                </p>
-              </div>
-              <div class="card-reveal">
-                <!-- TODO: change this -- only close button -->
-                <!-- <span class="card-title brown-text">Accomplishments<i class="mdi-navigation-close right"></i></span> -->
-                <span class="card-title brown-text"><small>Accomplishments</small><i
-                    class="mdi-navigation-close right"></i></span>
-                <ul>
-                  <li><b>Tech stack: </b>time series forecasting, GBM, feature engineering </li>
-                  <li>Selected features, and incorpated lags and moving windows on time series data</li>
-                  <li>Final solution is a catboost model which achieved 16% score on public leaderboard</li>
-
-                </ul>
-                <!-- TODO: UPLOAD THIS PROJECT ON GITHUB -->
-                <div class="card-action">
-                  <!-- <a aria-label="Visit the GitHub repo for  project" href="https://github.com/varadbhogayata/"
-                    target="_blank" data-position="top" data-tooltip="View Source"
-                    class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i
-                      class="fa fa-github"></i></a> -->
-                  <a aria-label="Visit the GitHub repo for  project"
-                      href="https://github.com/lilsummer/presentations_n_talks/blob/master/markdown/2020-05-20-m5-forecasting.md" target="_blank"
-                      data-position="top" data-tooltip="View Post"
-                      class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i
-                        class="fa fa-github"></i></a>
-                </div>
-              </div>
-            </div>
+        <a class="project-card" href="https://github.com/lilsummer/presentations_n_talks/blob/master/markdown/2021-06-01-btc-fee.md" target="_blank">
+          <span class="project-arrow">↗</span>
+          <div class="project-num">05</div>
+          <span class="project-tag">Regression · Crypto</span>
+          <h3 class="project-title">BTC Transaction Fee Analysis</h3>
+          <p class="project-desc">Exploring open-source datasets to understand what factors drive Bitcoin transaction fees using regression models.</p>
+          <div class="project-stack">
+            <span class="stack-tag">Python</span><span class="stack-tag">Regression</span><span class="stack-tag">Data Analysis</span>
           </div>
+        </a>
 
-          <!-- Image Generator -->
-          <div class="col s20 m10 l6">
-            <div class="card medium">
-              <div class="card-image waves-effect waves-block waves-light">
-                <img alt="Screenshot of  web app" src="/assets/img/slotmachine.jpg" style="height: 100%; width: 100%" class="activator" />
-              </div>
-              <div class="card-content">
-                <span class="card-title activator teal-text hoverline">A draft implementation of pricing agent in DRL<i
-                    class="mdi-navigation-more-vert right"></i></span>
-                <p>
-                  Using openAI gym to model a pricing agent with deep reinforcement learning (DRL)
-                </p>
-              </div>
-              <div class="card-reveal">
-                <!-- TODO: change this -- only close button -->
-                <!-- <span class="card-title brown-text">Accomplishments<i class="mdi-navigation-close right"></i></span> -->
-                <span class="card-title brown-text"><small>Accomplishments</small><i
-                    class="mdi-navigation-close right"></i></span>
-                <ul>
-                  <li>Experimented PPO, A2C and several other policies using stable baseline library</li>
-
-                </ul>
-                <div class="card-action">
-                  <a aria-label="Visit the GitHub repo for  project" href="https://github.com/varadbhogayata/"
-                    target="_blank" data-position="top" data-tooltip="View Source"
-                    class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i
-                      class="fa fa-github"></i></a>
-                </div>
-              </div>
-            </div>
+        <a class="project-card" href="https://colab.research.google.com/drive/1B276T_uFwyqkiqyP4ha4pwdaeoNXS1N0?usp=sharing" target="_blank">
+          <span class="project-arrow">↗</span>
+          <div class="project-num">06</div>
+          <span class="project-tag">ML · Travel Tech</span>
+          <h3 class="project-title">Conversion Rate Prediction</h3>
+          <p class="project-desc">Two-layered stacking ensemble on GPU/PySpark to predict itinerary conversion at scale for search ranking.</p>
+          <div class="project-stack">
+            <span class="stack-tag">Ensemble</span><span class="stack-tag">PySpark</span><span class="stack-tag">GPU</span>
           </div>
+        </a>
 
-          <!-- Head Counting System -->
-          <div class="col s20 m10 l6">
-            <div class="card medium">
-              <div class="card-image waves-effect waves-block waves-light">
-                <img alt="Screenshot of  web app" src="/assets/img/conversion_1.jpg" style="height: 100%; width: 100%" class="activator" />
-              </div>
-              <div class="card-content">
-                <span class="card-title activator teal-text hoverline">Conversion Rate Prediction by Two-layered Stacking Model + GPU<i
-                    class="mdi-navigation-more-vert right"></i></span>
-                <p>
-                  Supercharge conversion rate prediction on large volume itineraries
-                </p>
-              </div>
-              <div class="card-reveal">
-                <!-- TODO: change this -- only close button -->
-                <!-- <span class="card-title brown-text">Accomplishments<i class="mdi-navigation-close right"></i></span> -->
-                <span class="card-title brown-text"><small>Accomplishments</small><i
-                    class="mdi-navigation-close right"></i></span>
-                <ul>
-                  <li><b>Tech stack: </b>python, parallel computing, GPU, pyspark</li>
-                  <li>Two-layered ensemble model to predict itineraries for search ranking</li>
+      </div>
+    </section>
 
-                </ul>
-                <div class="card-action">
-                  <a aria-label="Visit the GitHub repo for  project"
-                    href="https://colab.research.google.com/drive/1B276T_uFwyqkiqyP4ha4pwdaeoNXS1N0?usp=sharing" target="_blank"
-                    data-position="top" data-tooltip="View Code"
-                    class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i
-                      class="fa fa-github"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- ************* -->
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="section-label">Get In Touch</div>
+      <h2 class="section-title">Contact<em>let's build something together</em></h2>
+      <div class="contact-inner">
+        <p>Whether you want to collaborate, share feedback on my writing, or seek career advice, I’d love to hear from you.</p>
+        <div class="contact-links">
+          <a class="contact-link" href="/cdn-cgi/l/email-protection#a8d0cf9a9b9bccc9dcc9cec7dadcc0cddfc1c6e8cfc5c9c1c486cbc7c5">
+            <span class="contact-link-icon">✉</span>
+            <span class="contact-link-text"><span class="__cf_email__" data-cfemail="d0b7a5bfb3b1a3a3b9b5a8b990b7bdb1b9bcfeb3bfbd">[email&#160;protected]</span>
+<span class="__cf_email__" data-cfemail="047c6336373760657065626b76706c61736d6a446369656d682a676b69">[email&#160;protected]</span></span>
+          </a>
+          <a class="contact-link" href="https://github.com/lilsummer" target="_blank">
+            <span class="contact-link-icon">⌥</span>
+            <span class="contact-link-text">github.com/lilsummer</span>
+          </a>
+          <a class="contact-link" href="https://www.linkedin.com/in/xi-cassie-guo-datascience/" target="_blank">
+            <span class="contact-link-icon">in</span>
+            <span class="contact-link-text">linkedin.com/in/xi-cassie-guo-datascience</span>
+          </a>
         </div>
       </div>
     </section>
 
+    <footer>© 2024 Cassie Guo · Built with intention</footer>
 
-    <!-- Seventh Section: Education
-    <section id="education" class="section scrollspy">
-      <h3 class="page-title white-text teal">Education</h3>
-      <div class="container">
-        <div class="row">
-          <div class="col s12 m6 l6">
-            <div class="card">
-              <div class="card-content">
-                <p>
-                  <span class="card-title"><a href="https://www.asu.edu/" target="_blank" class="teal-text hoverline">Arizona State University</a></span>
-                </p>
-                <p class="brown-text">Tempe, USA</p>
-                <p>
-                  <b>Degree: </b>Master of Science in Computer Science      
-                  <br>
-                  <b>CGPA: </b>4.0/4.0
-                </p>
-
-                <ul>
-                  <p>
-                    <b>Relevant Courseworks:</b>
-                  <ul>
-                    <li>Distributed Database Systems</li>
-                    <li>Cloud Computing</li>
-                    <li>Foundations of Algorithms</li>                    
-                  </ul>
-                  </p>
-
-                </ul>
-              </div>
-            </div>
-
-            
-          </div>
-          <div class="col s12 m6 l6">
-            <div class="card">
-              <div class="card-content">
-                <p>
-                  <span class="card-title"><a href="https://ahduni.edu.in/academics/schools-centres/school-of-engineering-and-applied-science/" target="_blank" class="teal-text hoverline">School of Engineering and Applied Science, Ahmedabad
-                      University</a></span>
-                </p>
-                <p class="brown-text">Ahmedabad, India</p>
-                <p>
-                  <b>Degree: </b>Bachelor of Technology in Information and Communication Technology
-                  <br>
-                  <b>CGPA: </b>3.13/4.33
-                </p>
-
-                <ul>
-                  <p>
-                    <b>Relevant Courseworks:</b>
-                  <ul>
-                    <li>Data Structures and Algorithms</li>
-                    <li>Database Management Systems</li>
-                    <li>Operating Systems</li>
-                    <li>Machine Learning</li>
-                    <li>Computer Vision</li>
-                  </ul>
-                  </p>
-
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section> -->
-
-    <!-- Eight Section: Contact -->
-    <section id="contact" class="section scrollspy full-height">
-      <h3 class="page-title white-text teal">Contact</h3>
-      <div class="container">
-        <p>
-          <a aria-label="Email me" href="mailto:xg233dataforthewin@gmail.com" target="_blank" data-position="top"
-            data-tooltip="Email Cassie" class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i
-              class="fa fa-envelope"></i><a aria-label="Email Cassie" href="mailto:xg233dataforthewin@gmail.com"
-              class="hoverline">xg233dataforthewin@gmail.com</a></a>
-        </p>
-        <p>
-          <a aria-label="View me on GitHub" href="http://github.com/lilsummer" target="_blank"
-            data-position="top" data-tooltip="View me on GitHub"
-            class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i class="fa fa-github"></i><a
-              aria-label="Cassie on Github" href="http://github.com/lilsummer" class="hoverline"
-              target="_blank">github.com/lilsummer</a></a>
-        </p>
-        <p>
-          <a aria-label="View me on LinkedIn" href="http://linkedin.com/in/xi-cassie-guo-datascience" target="_blank"
-            data-position="top" data-tooltip="View Cassie on LinkedIn"
-            class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i
-              class="fa fa-linkedin"></i><a aria-label="Cassie on LinkedIn" href="http://linkedin.com/in/xi-cassie-guo-datascience"
-              class="hoverline" target="_blank">linkedin.com/in/xi-cassie-guo-datascience</a></a>
-        </p>
-      </div>
-    </section>
   </main>
 
-  <!-- typed.js -->
-  <script src="assets/vendor/typed.js/typed.min.js"></script>
-  <script type="text/javascript">
-    var typed = new Typed('.typing',{
-      strings: ["Data Munger", "Scientist", "Office Snacking Expert", "Startup Veteran"],
-      loop: true,
-      typeSpeed: 80,
-      backSpeed: 40
-    });
-  </script>
-
-
-  <!-- jQuery-->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-
-  <!-- Materialize - Compiled and minified JavaScript-->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/js/materialize.min.js"></script>
-  <script>
-    // Materialize - Initializers
-    $(document).ready(function () {
-      $(".scrollspy").scrollSpy()
-      // Initialize collapse button
-      $(".button-collapse").sideNav({
-        menuWidth: 190, // Default is 240
-        edge: "left", // Choose the horizontal origin
-        closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
-      })
-    })
-  </script>
-</body>
-
-</html>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    const sections = document.query
